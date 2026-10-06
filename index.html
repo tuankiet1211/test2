@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thi thử IQ trẻ em - KLIGHT Technology For Kids</title>
+<link rel="icon" type="image/png" href="images/avatars/logott.ico">
+<link rel="apple-touch-icon" href="images/avatars/logott.ico">
+<meta name="description" content="Klight - bộ thí nghiệm khoa học, robot và lập trình giúp trẻ học bằng trải nghiệm thật.">
+<meta name="theme-color" content="#0B1B4D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="iq.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">K<span class="logo-x">LIGHT</span></span>
+      <span class="logo-sub">Technology For Kids</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Menu chính">
+      <a href="#top" class="nav-link">Trang chủ</a>
+      <a href="#paths" class="nav-link">Sản Phẩm</a>
+      <a href="#whyme" class="nav-link">Về chúng tôi</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#" class="btn btn-primary open-modal" data-title="Nhận ưu đãi ngay" data-desc="Hotline/Zalo: 0866605744 (Hỗ trợ 24/24)">Nhận ưu đãi ngay</a>
+      <button class="burger" id="burger" aria-label="Mở menu" aria-controls="mainNav" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="section iq-section" id="iqApp">
+    <div class="container">
+
+      <!-- 1. CHỌN ĐỘ TUỔI -->
+      <div id="iq-home">
+        <div class="section-head iq-center">
+          <span class="eyebrow eyebrow-dark">KLIGHT · Thi thử IQ · Kids IQ Practice Test</span>
+          <h1 class="section-title">Thi thử đánh giá IQ trẻ em online</h1>
+          <p class="section-desc iq-en" style="font-size:1.1rem">Chọn độ tuổi của bé để bắt đầu bài thi miễn phí<br>Select your child's age group to begin the free test</p>
+        </div>
+        <div class="iq-cards" id="iq-cards"></div>
+        <div class="iq-feat"><span>🔒 Không cần tài khoản · No account needed</span><span>👁 100% hình ảnh · 100% visual</span><span>⏱ Khoảng 10 phút · About 10 minutes</span></div>
+      </div>
+
+      <!-- 2. CHỌN NGÔN NGỮ + MÔ TẢ + BẮT ĐẦU -->
+      <div id="iq-intro" class="iq-hide"><div class="iq-intro">
+        <button class="iq-back" id="iq-back1" type="button"></button>
+        <h2 class="iq-h1" id="iq-iTitle"></h2>
+        <div class="iq-meta" id="iq-iMeta"></div>
+        <div class="iq-lang"><button type="button" data-l="vi" class="on">🇻🇳 Tiếng Việt</button><button type="button" data-l="en">🇬🇧 English</button></div>
+        <div class="iq-desc"><p id="iq-iDesc"></p></div>
+        <button class="btn btn-primary btn-lg btn-block" id="iq-start" type="button" style="margin-top:12px;border-radius:var(--radius-sm)"></button>
+      </div></div>
+
+      <!-- 3. BÀI THI (danh sách câu hỏi + bảng câu hỏi bên phải) -->
+      <div id="iq-exam" class="iq-hide"><div class="iq-layout">
+        <div>
+          <h2 class="iq-h1" id="iq-title"></h2>
+          <div class="iq-meta"><span id="iq-m1"></span><span id="iq-m2"></span><span id="iq-m3"></span></div>
+          <div id="iq-qs"></div>
+        </div>
+        <aside class="iq-panel">
+          <div class="iq-ph" id="iq-ph"></div>
+          <div class="iq-pb">
+            <div class="iq-timer" id="iq-timer">00:00</div>
+            <div class="iq-tg"><span id="iq-tgt"></span><span class="iq-sw"><input type="checkbox" id="iq-instant" aria-label="toggle"><i></i></span></div>
+            <div class="iq-pal" id="iq-pal"></div>
+            <div class="iq-pg"><button type="button" id="iq-pp"></button><span id="iq-pn"></span><button type="button" id="iq-pnx"></button></div>
+            <button class="btn btn-primary btn-lg btn-block" id="iq-submit" type="button"></button>
+          </div>
+        </aside>
+      </div></div>
+
+      <!-- 4. FORM LẤY KẾT QUẢ -->
+      <div id="iq-form" class="iq-hide"><div class="iq-box">
+        <div class="iq-c" style="font-size:2.6rem">🎉</div>
+        <h2 class="iq-h1 iq-c" id="iq-fT" style="font-size:1.5rem"></h2>
+        <p class="iq-c iq-note" id="iq-fS"></p>
+        <label id="iq-l1" for="iq-fChild"></label><input type="text" id="iq-fChild" autocomplete="off">
+        <label id="iq-l2" for="iq-fAge"></label><input type="text" id="iq-fAge" autocomplete="off">
+        <label id="iq-l3" for="iq-fParent"></label><input type="text" id="iq-fParent" autocomplete="name">
+        <label id="iq-l4" for="iq-fPhone"></label><input type="tel" id="iq-fPhone" autocomplete="tel" inputmode="numeric" maxlength="10">
+        <p class="iq-err" id="iq-err" role="status" aria-live="polite"></p>
+        <button class="btn btn-primary btn-lg btn-block" id="iq-send" type="button"></button>
+      </div></div>
+
+      <!-- 5. CẢM ƠN -->
+      <div id="iq-thanks" class="iq-hide"><div class="iq-box iq-c">
+        <div style="font-size:3rem">✅</div><h2 class="iq-h1" id="iq-tT" style="font-size:1.5rem"></h2>
+        <p class="iq-note" id="iq-tmsg"></p>
+        <button class="btn btn-outline" id="iq-again" type="button" style="margin-top:8px"></button>
+      </div></div>
+
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="logo-mark light">K<span class="logo-x">Light</span></span>
+      <span class="logo-sub light">Technology For Kids</span>
+      <p>Klight mang đến các bộ thí nghiệm khoa học và sản phẩm công nghệ giáo dục, giúp trẻ học bằng trải nghiệm thật.<br>Hoài Đức, Hà Nội, Việt Nam.</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Về Klight</h5>
+      <a href="#whyme">Câu chuyện của chúng tôi</a>
+      <a href="#register">Liên hệ hợp tác</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Khám phá sản phẩm</h5>
+      <a href="#kids">Bộ thí nghiệm Gỗ &amp; Nhựa</a>
+      <a href="#adults">Robot &amp; Lập trình</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Hoạt động</h5>
+      <a href="#students">Video hướng dẫn</a>
+      <a href="#register">Ưu đãi &amp; khuyến mãi</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Klight. All Rights Reserved.</p>
+    <div class="social-row">
+      <a href="tel:0866605744" class="social-icon social-phone" aria-label="Gọi điện">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+      </a>
+      <a href="https://zalo.me/0866605744" target="_blank" rel="noopener" class="social-icon social-zalo" aria-label="Zalo"><span class="social-text">Za</span></a>
+      <a href="https://www.facebook.com/klightvn/" target="_blank" rel="noopener" class="social-icon social-fb" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2C17.1 5.1 15.9 5 14.5 5 11.6 5 9.7 6.8 9.7 10v2.5H6.5v3.7h3.2V22h3.8v-5.8h3.1l.5-3.7h-3.6V10.3c0-1.1.3-1.8 1.5-1.8z" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@klight112" target="_blank" rel="noopener" class="social-icon social-tiktok" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16.5 3c.4 2.2 1.8 3.7 4 3.9v2.6c-1.4 0-2.7-.4-3.9-1.3v6.4c0 3.1-2.5 5.4-5.4 5.4S5.8 17.7 5.8 14.6c0-3 2.4-5.4 5.4-5.4.4 0 .8 0 1.1.1v2.7c-.3-.1-.7-.2-1.1-.2-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.8-1.1 2.8-2.7V3h2.5z" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@C%C3%B4ngngh%E1%BB%87nh%E1%BB%8F" target="_blank" rel="noopener" class="social-icon social-yt" aria-label="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.6 7.2c-.3-1-1-1.8-2-2C17.9 4.8 12 4.8 12 4.8s-5.9 0-7.6.4c-1 .2-1.7 1-2 2C2 8.9 2 12 2 12s0 3.1.4 4.8c.3 1 1 1.8 2 2 1.7.4 7.6.4 7.6.4s5.9 0 7.6-.4c1-.2 1.7-1 2-2 .4-1.7.4-4.8.4-4.8s0-3.1-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Thanh liên hệ nhanh (chỉ hiện trên điện thoại) -->
+<div class="mobile-bar" aria-label="Liên hệ nhanh">
+  <a class="mb-call" href="tel:0866605744" aria-label="Gọi ngay">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+  </a>
+  <a class="mb-zalo" href="https://zalo.me/0866605744" target="_blank" rel="noopener" aria-label="Chat Zalo">Zalo</a>
+  <a class="mb-cta open-modal" href="#" data-title="Nhận ưu đãi ngay" data-desc="Hotline/Zalo: 0866605744 (Hỗ trợ 24/24)">Nhận tư vấn miễn phí</a>
+</div>
+
+<button class="scroll-top" id="scrollTop" aria-label="Lên đầu trang">↑</button>
+
+<!-- ============ POPUP TƯ VẤN ============ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Đóng">&times;</button>
+    <span class="tag-pill" id="modalTag">Kết nối với chúng tôi</span>
+    <h3 id="modalTitle">Nhận tư vấn</h3>
+    <p id="modalDesc">Để lại thông tin để KLight tư vấn cho bạn.</p>
+
+    <form class="cta-form modal-form" id="modalForm" novalidate>
+      <input type="text" name="name" placeholder="Họ và tên" autocomplete="name" required>
+      <input type="tel" name="phone" placeholder="Số điện thoại" autocomplete="tel" inputmode="numeric" maxlength="10" required>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Đăng ký nhận tư vấn</button>
+      <p class="form-note" id="modalFormNote" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+<script src="iq.js" defer></script>
+</body>
+</html>
