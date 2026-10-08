@@ -1,3 +1,5 @@
+// Link Google Apps Script RIÊNG của bài thi IQ (không dùng chung với SCRIPT_URL của form "Nhận ưu đãi ngay" trong script.js)
+const IQ_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUVR_SHZMdu3OcPuBTLpSFJArcetM158cxn9dVbl73MTwnu11KVUFa7J99KBpOPA/exec';
 (function(){
 /* ==========================================================================
    KLIGHT – Bài thử tư duy v2
@@ -212,20 +214,36 @@ document.head.appendChild(st);
 const tg=document.querySelector(".iq-tg");if(tg)tg.style.display="none"; /* không báo đúng/sai ngay: tránh làm sai lệch kết quả */
 const ft=document.querySelectorAll(".iq-feat span");if(ft[2])ft[2].textContent="⏱ 20–35 phút theo độ tuổi · 20–35 min by age";
 
-const S={vi:{it:"Bài thử",back:"← Chọn độ tuổi khác",go:"Bắt đầu làm bài",t:"Bài thử tư duy trẻ em online – ",cau:"Câu",qs:"câu hỏi",min:"phút",ph:"Câu hỏi",prev:"Quay lại",next:"Tiếp theo",page:"Trang",sub:"Nộp bài",left:"Còn %d câu chưa làm. Vẫn nộp bài?",view:"👁 Xem mẫu",
- fT:"Bé đã hoàn thành bài thử!",fS:"Ba mẹ vui lòng để lại thông tin để nhận kết quả của bé.",l:["Tên của bé *","Ngày sinh / tuổi của bé","Tên phụ huynh *","Số điện thoại / Zalo *"],send:"Nhận kết quả",
- err:"Vui lòng nhập tên bé, tên phụ huynh và số điện thoại 10 số (bắt đầu bằng 0).",tT:"Cảm ơn ba mẹ!",tm:"Đội ngũ KLight sẽ liên hệ trong 24h tới. Đây là điểm tham khảo, chưa phải kết quả đo IQ chính thức.",fail:"Có lỗi xảy ra. Vui lòng thử lại sau.",sending:"Đang gửi...",home:"Về trang chủ",res:"Bé trả lời đúng",
+const S={vi:{it:"Bài thử",back:"← Chọn độ tuổi khác",go:"Bắt đầu làm bài",t:"Bài thi đánh giá IQ trẻ em – ",cau:"Câu",qs:"câu hỏi",min:"phút",ph:"Câu hỏi",prev:"Quay lại",next:"Tiếp theo",page:"Trang",sub:"Nộp bài",left:"Còn %d câu chưa làm. Bạn có muốn nộp bài luôn?",view:"👁 Xem mẫu",
+ fT:"Chúc mừng bạn đã hoàn thành bài đánh giá Tư duy!",fS:"<span class=\"iq-f1\">Đừng chỉ nhìn vào điểm số — hãy hiểu khả năng tư duy hiện tại của con.</span><span class=\"iq-f2\">Hoàn toàn miễn phí, ba mẹ sẽ nhận được bản đánh giá chuyên sâu từ đội ngũ chuyên gia dựa trên kết quả từ bài thi của con. Với sự phân tích từ đội ngũ chuyên gia, giúp nhận diện các nhóm năng lực nổi bật, điểm cần phát triển và thiên hướng phù hợp để con phát triển tốt hơn trong tương lai.</span><span class=\"iq-f3\">👉 Để lại thông tin của bạn để chuyên gia đánh giá và gửi lại kết quả trong thời gian sớm nhất.</span>",l:["Tên của con *","Lớp của con *","Tên phụ huynh *","Gmail phụ huynh *","Số điện thoại / Zalo phụ huynh *"],send:"Nhận kết quả",
+ err:"Vui lòng điền đủ thông tin.",e:["Vui lòng điền tên của con.","Vui lòng điền lớp của con.","Vui lòng điền tên phụ huynh.","Vui lòng điền Gmail phụ huynh.","Vui lòng điền số điện thoại / Zalo phụ huynh."],eMail:"Gmail chưa đúng, cần đủ đuôi. Ví dụ: tenban@gmail.com",ePhone:"Số điện thoại cần đúng 10 số và bắt đầu bằng 0.",tT:"Gửi thành công!",tm1:"Đội ngũ chuyên gia của chúng tôi sẽ sớm đánh giá và gửi kết quả cho ba mẹ trong vòng 24h.",tm2:"Cần hỗ trợ ngay? Ba mẹ nhấn vào để liên hệ:",tm3:"Ba mẹ cũng có thể xem kết quả chúng tôi gửi trong cộng đồng phụ huynh.",tm:"Đội ngũ KLight sẽ liên hệ trong 24h tới. Đây là điểm tham khảo, chưa phải kết quả đo IQ chính thức.",fail:"Có lỗi xảy ra. Vui lòng thử lại sau.",sending:"Đang gửi...",home:"Về trang chủ",res:"Bé trả lời đúng",
  ld:(a,n)=>`Đề gồm ${n} câu hình ảnh (${a.min} phút) đo 4 nhóm: suy luận logic, suy luận số, tư duy không gian, trí nhớ hình ảnh. Ba mẹ để bé tự làm, không gợi ý. Đây là bài thử tham khảo, không phải bài đo IQ chính thức.`},
-en:{it:"Test",back:"← Choose another age",go:"Start the test",t:"Kids Reasoning Practice Test Online – ",cau:"Question",qs:"questions",min:"minutes",ph:"Questions",prev:"Back",next:"Next",page:"Page",sub:"Submit",left:"%d question(s) unanswered. Submit anyway?",view:"👁 View pattern",
- fT:"Your child has finished the test!",fS:"Please leave your details to receive your child's result.",l:["Child's name *","Child's birthday / age","Parent's name *","Phone / Zalo *"],send:"Get result",
- err:"Please enter the child's name, parent's name and a 10-digit phone number starting with 0.",tT:"Thank you!",tm:"The KLight team will contact you within 24 hours. This is a reference score, not an official IQ result.",fail:"Something went wrong. Please try again later.",sending:"Sending...",home:"Back to home",res:"Correct answers",
+en:{it:"Test",back:"← Choose another age",go:"Start the test",t:"Children's IQ Assessment Test – ",cau:"Question",qs:"questions",min:"minutes",ph:"Questions",prev:"Back",next:"Next",page:"Page",sub:"Submit",left:"%d question(s) unanswered. Submit anyway?",view:"👁 View pattern",
+ fT:"Congratulations on completing the Thinking Assessment!",fS:"<span class=\"iq-f1\">Don't just look at the score — understand your child's current thinking ability.</span><span class=\"iq-f2\">Completely free: parents will receive an in-depth assessment from our expert team based on your child's test results, identifying standout skill areas, areas to develop, and suitable directions for your child's future growth.</span><span class=\"iq-f3\">👉 Leave your details so our experts can evaluate and send back the result as soon as possible.</span>",l:["Child's name *","Child's grade / class *","Parent's name *","Parent's Gmail *","Parent's phone / Zalo *"],send:"Get result",
+ err:"Please fill in all fields.",e:["Please enter your child's name.","Please enter your child's class.","Please enter the parent's name.","Please enter the parent's Gmail.","Please enter the parent's phone / Zalo."],eMail:"Invalid Gmail — it needs a full domain, e.g. yourname@gmail.com",ePhone:"Phone number must be exactly 10 digits and start with 0.",tT:"Sent successfully!",tm1:"Our expert team will evaluate and send your child's result within 24 hours.",tm2:"Need help right away? Tap to contact us:",tm3:"You can also view the results we send in our parent community.",tm:"The KLight team will contact you within 24 hours. This is a reference score, not an official IQ result.",fail:"Something went wrong. Please try again later.",sending:"Sending...",home:"Back to home",res:"Correct answers",
  ld:(a,n)=>`${n} visual questions (${a.min} minutes) covering logical, numerical, spatial reasoning and visual memory. Let your child work alone without hints. This is a reference practice test, not an official IQ test.`}};
 const $=i=>document.getElementById("iq-"+i),app=document.getElementById("iqApp"),T=k=>S[L][k],li=()=>L==="vi"?0:1,PS=25;
+document.getElementById("navHome").onclick = e => {
+  e.preventDefault();
+
+  const exam = !$("exam").classList.contains("iq-hide");
+
+  if (exam) {
+    if (!confirm("Vui lòng nộp bài thi! Nếu về trang chủ, bài thi hiện tại sẽ bị mất. Bạn có chắc muốn thoát không?")) {
+      return;
+    }
+  }
+
+  show("home");
+};
 let age,L="vi",QS,N,ans,tick,left,score,pg,doms;
+let examHistory = false;
+history.replaceState({home:true},"","#top");
 const show=i=>{["home","intro","exam","form","thanks"].forEach(s=>$(s).classList.toggle("iq-hide",s!==i));app.scrollIntoView({block:"start"})};
 
 $("cards").innerHTML=AGES.map((a,i)=>`<button type="button" class="iq-age iq-c${i+1}" data-id="${a.id}"><small>${a.n[1].toUpperCase()} · ${a.n[0]}</small><h3>${a.name}</h3><p>${a.d[0]}</p><p class="iq-en2">${a.d[1]}</p><span class="iq-go">Bắt đầu · Start →</span></button>`).join("");
 document.querySelectorAll(".iq-age").forEach(e=>e.onclick=()=>{age=AGES.find(a=>a.id===e.dataset.id);setLang("vi");show("intro")});
+
 const cnt=a=>Object.values(a.s).reduce((x,y)=>x+y.length,0);
 function renderIntro(){const n=cnt(age);$("iTitle").textContent=T("it")+" "+age.name+" · "+age.n[li()];$("iMeta").innerHTML=`<span>📝 ${n} ${T("qs")}</span><span>⏱ ${age.min} ${T("min")}</span>`;$("iDesc").textContent=T("ld")(age,n);$("back1").textContent=T("back");$("start").textContent=T("go")}
 function head(){$("title").textContent=T("t")+age.name+" · "+age.n[li()];$("m1").textContent=`📝 ${N} ${T("qs")}`;$("m2").textContent=`⏱ ${age.min} ${T("min")}`;$("m3").textContent="🎓 "+age.n[li()];$("ph").textContent=T("ph");$("pp").textContent=T("prev");$("pnx").textContent=T("next");$("submit").textContent=T("sub")}
@@ -233,8 +251,44 @@ function setLang(l){L=l;document.querySelectorAll(".iq-lang button").forEach(b=>
 document.querySelectorAll(".iq-lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 $("back1").onclick=()=>show("home");$("again").onclick=()=>show("home");
 const clock=()=>$("timer").textContent=String(left/60|0).padStart(2,"0")+":"+String(left%60).padStart(2,"0");
-$("start").onclick=()=>{QS=build(age);N=QS.length;ans=Array(N).fill(null);left=age.min*60;pg=0;head();draw();show("exam");clock();clearInterval(tick);tick=setInterval(()=>{left--;clock();if(left<=0)finish()},1000)};
+$("start").onclick=()=>{
+  QS=build(age);
+  N=QS.length;
+  ans=Array(N).fill(null);
+  left=age.min*60;
+  pg=0;
+  head();
+  draw();
+  show("exam");
+  clock();
 
+  examHistory=true;
+  history.pushState({exam:true},"","#exam");
+
+  clearInterval(tick);
+  tick=setInterval(()=>{
+    left--;
+    clock();
+    if(left<=0)finish()
+  },1000)
+};
+window.addEventListener("popstate",()=>{
+  if(examHistory && !$("exam").classList.contains("iq-hide")){
+    const leave=confirm(
+      "Bạn đang làm bài. Nếu quay lại trang chủ, bài thi hiện tại sẽ bị mất.\n\nBạn có chắc muốn thoát không?"
+    );
+
+    if(leave){
+      examHistory=false;
+      history.replaceState({home:true},"","#top");
+      show("home");
+    }else{
+      history.pushState({exam:true},"","#exam");
+    }
+  }else{
+    show("home");
+  }
+});
 const memHtml=(q,i)=>`<div class="iq-st" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><div id="iq-mv${i}" style="width:130px;height:130px;background:#EEF1F3;border-radius:14px;display:flex;align-items:center;justify-content:center;font:700 1.6rem var(--font-display);color:#8A9A9A">${q.seen?"?":"👁"}</div><button type="button" class="btn btn-outline iq-mb" data-i="${i}" ${q.seen?"disabled":""}>${T("view")}</button></div>`;
 function draw(){
  $("qs").innerHTML=QS.map((q,i)=>`<div class="iq-q" id="iq-q${i}"><b>${T("cau")} ${i+1}:</b><div class="iq-qp"><div style="font-weight:700;color:var(--navy);font-size:1.05rem">${q.p[li()]}</div></div><div class="iq-qrow">${q.mem?memHtml(q,i):q.stim?`<div class="iq-st">${q.stim}</div>`:""}<div class="iq-opts">${q.opts.map((o,j)=>`<label class="iq-opt${ans[i]===j?" on":""}" id="iq-o${i}_${j}"><input type="radio" name="iqq${i}" value="${j}" ${ans[i]===j?"checked":""} aria-label="${"ABCDE"[j]}"><b>${"ABCDE"[j]}</b>${o}</label>`).join("")}</div></div></div>`).join("");
@@ -250,22 +304,30 @@ $("pp").onclick=()=>{pg--;pal()};$("pnx").onclick=()=>{pg++;pal()};
 $("submit").onclick=()=>{const u=ans.filter(a=>a===null).length;if(u&&!confirm(T("left").replace("%d",u)))return;finish()};
 
 function finish(){
+     examHistory=false;
+  history.replaceState({home:true},"","#top");
  clearInterval(tick);score=0;doms={};
  QS.forEach((q,i)=>{const g=GRP[q.dom],d=doms[g]=doms[g]||[0,0],ok=ans[i]===q.ans;d[1]++;if(ok){d[0]++;score++}});
- $("fT").textContent=T("fT");$("fS").textContent=T("fS");T("l").forEach((t,i)=>$("l"+(i+1)).textContent=t);$("send").textContent=T("send");$("err").textContent="";show("form")}
+ $("fT").textContent=T("fT");$("fS").innerHTML=T("fS");T("l").forEach((t,i)=>$("l"+(i+1)).textContent=t);$("send").textContent=T("send");$("err").textContent="";show("form")}
 
+["fChild","fAge","fParent","fEmail","fPhone"].forEach(k=>$(k).addEventListener("input",e=>{e.target.classList.remove("iq-bad");if($("err").previousElementSibling===e.target){$("err").textContent=""}}));
 $("send").onclick=async()=>{
- const d={child:$("fChild").value.trim(),age:$("fAge").value.trim(),parent:$("fParent").value.trim(),phone:$("fPhone").value.trim()};
- if(!d.child||!d.parent||!/^0\d{9}$/.test(d.phone)){$("err").textContent=T("err");return}
+ const d={child:$("fChild").value.trim(),age:$("fAge").value.trim(),parent:$("fParent").value.trim(),email:$("fEmail").value.trim(),phone:$("fPhone").value.trim()};
+ const E=T("e"),chk=[[!d.child,E[0],"fChild"],[!d.age,E[1],"fAge"],[!d.parent,E[2],"fParent"],[!d.email,E[3],"fEmail"],[!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(d.email),T("eMail"),"fEmail"],[!d.phone,E[4],"fPhone"],[!/^0\d{9}$/.test(d.phone),T("ePhone"),"fPhone"]],bad=chk.find(c=>c[0]);
+ document.querySelectorAll(".iq-bad").forEach(x=>x.classList.remove("iq-bad"));
+ if(bad){const f=$(bad[2]);f.classList.add("iq-bad");f.insertAdjacentElement("afterend",$("err"));$("err").textContent=bad[1];f.focus({preventScroll:true});f.scrollIntoView({block:"center",behavior:"smooth"});return}
+ $("send").insertAdjacentElement("beforebegin",$("err"));
  const lang=L==="vi"?"Tiếng Việt":"English",as=ans.map(a=>a===null?"-":"ABCDE"[a]).join(""),ex=age.name+" "+age.n[0],used=age.min*60-Math.max(left,0);
  const ds=Object.entries(doms).map(([g,v])=>g+":"+v[0]+"/"+v[1]).join(",");
- const payload={name:d.parent,phone:d.phone,product:`Bài thử tư duy v2 | Bé: ${d.child}${d.age?" ("+d.age+")":""} | ${ex} | Điểm ${score}/${N} | ${ds} | ${used}s | ${lang}`,
-  source:"Bài thử tư duy v2",child:d.child,childAge:d.age,exam:ex,score:score+"/"+N,domains:ds,seconds:used,language:lang,answers:as,version:"v2"};
+ const payload={name:d.parent,phone:d.phone,email:d.email,product:`Bài thử tư duy v2 | Bé: ${d.child}${d.age?" (Lớp "+d.age+")":""} | Email: ${d.email} | ${ex} | Điểm ${score}/${N} | ${ds} | ${used}s | ${lang}`,
+  source:"Bài thử tư duy v2",child:d.child,childAge:d.age,childClass:d.age,parentEmail:d.email,exam:ex,score:score+"/"+N,domains:ds,seconds:used,language:lang,answers:as,version:"v2"};
  $("err").textContent=T("sending");$("send").disabled=true;
- try{await fetch(SCRIPT_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+ try{const body=JSON.stringify(payload),req=()=>fetch(IQ_SCRIPT_URL,{method:"POST",mode:"no-cors",keepalive:true,headers:{"Content-Type":"text/plain;charset=utf-8"},body});
+  req().catch(()=>setTimeout(()=>req().catch(()=>{}),3000));
   $("err").textContent="";$("tT").textContent=T("tT");
-  $("tmsg").innerHTML=`<b>${T("res")}: ${score}/${N}</b><br><br>`+Object.entries(doms).map(([g,v])=>`${GN[g][li()]}: ${v[0]}/${v[1]}<div class="iq-bar"><i style="width:${Math.round(v[0]/v[1]*100)}%"></i></div>`).join("")+T("tm");
-  $("again").textContent=T("home");["fChild","fAge","fParent","fPhone"].forEach(k=>$(k).value="");show("thanks")}
+  $("tmsg").innerHTML=`<span class="iq-t1">${T("tm1")}</span><span class="iq-t2">${T("tm2")}</span><span id="iq-tsoc"></span><span class="iq-t3">${T("tm3")}</span>`;
+  const sr=document.querySelector(".site-footer .social-row");if(sr){const c=sr.cloneNode(true);c.querySelectorAll(".social-tiktok,.social-yt").forEach(x=>x.remove());$("tsoc").appendChild(c)}
+  $("again").textContent=T("home");["fChild","fAge","fParent","fEmail","fPhone"].forEach(k=>$(k).value="");show("thanks")}
  catch(e){console.error(e);$("err").textContent=T("fail")}
  finally{$("send").disabled=false}};
 })();
